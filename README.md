@@ -20,7 +20,7 @@ Note: We removed the Context-Provider included in these tutorials.
 - Docker-ce 18.06.1
 - Docker Compose 1.22.0
 
-# Docker and Docker Compose
+# Install Docker and Docker Compose
 
 How to install Docker-CE for Ubuntu 18.04: 
 - https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
@@ -28,7 +28,7 @@ How to install Docker-CE for Ubuntu 18.04:
 How to install Docker Compose for Ubuntu 18.04:
 - https://docs.docker.com/compose/install/#install-compose
 
-You may save the following scripts for bash to install docker-ce and docker-compose.
+You may use the following scripts for bash to install docker-ce and docker-compose.
 
 ```
 apt-get update
@@ -49,23 +49,23 @@ curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compo
 chmod +x /usr/local/bin/docker-compose
 ```
 
-# Initialization
+# Initialization of Services
 
 ```
-% git clone https://github.com/royalcrab/accra_kobe/
-% cd accra_kobe
-% sudo ./services create
+$ git clone https://github.com/royalcrab/accra_kobe/
+$ cd accra_kobe
+$ sudo ./services create
 ```
 
 # Starting Servives
 
 ```
-% sudo ./serviecs start
+$ sudo ./serviecs start
 ```
 
 # Stopping Servives
 
 ```
-% sudo ./services stop
+$ sudo ./services stop
 ```
 
