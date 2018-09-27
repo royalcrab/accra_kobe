@@ -28,7 +28,7 @@ How to install Docker-CE for Ubuntu 18.04:
 How to install Docker Compose for Ubuntu 18.04:
 - https://docs.docker.com/compose/install/#install-compose
 
-You may use the following scripts for bash to install docker-ce and docker-compose.
+You may use the following scripts for bash to install docker-ce and docker-compose (as root).
 
 ```
 apt-get update
