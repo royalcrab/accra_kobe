@@ -60,7 +60,7 @@ $ sudo ./services create
 # Starting Servives
 
 ```
-$ sudo ./serviecs start
+$ sudo ./services start
 ```
 
 # Stopping Servives
