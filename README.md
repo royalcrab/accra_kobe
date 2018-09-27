@@ -30,6 +30,7 @@ https://docs.docker.com/compose/install/#install-compose
 
 You may save the following scripts for bash to install docker-ce and docker-compose.
 
+```
 apt-get update
 apt-get install \
     apt-transport-https \
@@ -46,19 +47,25 @@ apt-get update
 apt-get install docker-ce
 curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
+```
 
 # Initialization
 
+```
 % git clone https://github.com/royalcrab/accra_kobe/
 % cd accra_kobe
 % sudo ./services create
+```
 
 # Starting Servives
 
+```
 % sudo ./serviecs start
+```
 
 # Stopping Servives
 
+```
 % sudo ./services stop
-
+```
 
