@@ -9,8 +9,8 @@
 Ports 1026 and 1883 must be exposed for external applications.
 
 This server is an extention of the following tutorials:
-https://github.com/Fiware/tutorials.IoT-over-MQTT/blob/master/README.md
-https://github.com/Fiware/tutorials.Historic-Context/blob/23cd4a2eea86805581757492e03202d5a8b86ee4/README.md
+- https://github.com/Fiware/tutorials.IoT-over-MQTT/blob/master/README.md
+- https://github.com/Fiware/tutorials.Historic-Context/blob/23cd4a2eea86805581757492e03202d5a8b86ee4/README.md
 
 Note: We removed the Context-Provider included in these tutorials.
 
@@ -23,10 +23,10 @@ Note: We removed the Context-Provider included in these tutorials.
 # Docker and Docker Compose
 
 How to install Docker-CE for Ubuntu 18.04: 
-https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
+- https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
 
 How to install Docker Compose for Ubuntu 18.04:
-https://docs.docker.com/compose/install/#install-compose
+- https://docs.docker.com/compose/install/#install-compose
 
 You may save the following scripts for bash to install docker-ce and docker-compose.
 
