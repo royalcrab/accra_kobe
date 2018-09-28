@@ -16,12 +16,13 @@ case "${command}" in
         echo "usage: services [create|start|stop]"
         ;;
     "start")
-                echo -e "Starting five containers \033[1;34mOrion\033[0m, \033[1;36mIoT-Agent\033[0m, \033[1;30mCon
-text-Provider\033[0m, \033[1;30mMosquitto\033[0m MQTT broker and a \033[1;30mMongoDB\033[0m database."
+                echo -e "Starting the following 7 modules"
                 echo -e "- \033[1;34mOrion\033[0m is the context broker"
                 echo -e "- \033[1;36mIoT-Agent\033[0m is configured for the UltraLight Protocol"
-                echo -e "- \033[1;30mContext-Provider\033[0m acts as a series of dummy IoT Sensors over MQTT"
                 echo -e "- \033[1;30mMosquitto\033[0m acts as an MQTT Message Broker"
+                echo -e "- \033[1;30mCygnus\033[0m acts as a Historical Data Manager"
+                echo -e "- \033[1;30mSquid\033[0m acts as a Reverse TSL Proxy"
+                echo -e "- \033[1;30mKeyroc\033[0m acts as an Identity Management Front-End"
                 echo ""
                 docker-compose --log-level ERROR -p fiware up -d --remove-orphans
                 ;;
@@ -30,7 +31,7 @@ text-Provider\033[0m, \033[1;30mMosquitto\033[0m MQTT broker and a \033[1;30mMon
                 docker-compose --log-level ERROR -p fiware down -v --remove-orphans
                 ;;
         "create")
-                echo "Obtaining Mongo DB image"
+                echo "Obtaining Mongo DB 3.6 image"
                 docker pull mongo:3.6
                 echo "Obtaining Latest Orion Image"
                 docker pull fiware/orion
@@ -38,12 +39,14 @@ text-Provider\033[0m, \033[1;30mMosquitto\033[0m MQTT broker and a \033[1;30mMon
                 docker pull fiware/iotagent-ul
                 echo "Obtaining Latest Mosquitto Message Broker"
                 docker pull eclipse-mosquitto
-                echo "Obtaining Tutorial Context-Provider"
-                docker pull fiware/tutorials.context-provider
                 echo "Obtaining Latest Cygnus"
                 docker pull fiware/cygnus-ngsi
-		echo "Squid"
-		docker build -t sameersbn/squid github.com/sameersbn/docker-squid
+                echo "Obtaining Latest Squid"
+        		docker build -t sameersbn/squid github.com/sameersbn/docker-squid
+                echo "Obtaining MySQL 5.7 image"
+                docker pull mysql:5.7
+                echo "Obtaining Latest Keyrock Image"
+                docker pull fiware/idm
                 ;;
         *)
                 echo "Command not Found."
