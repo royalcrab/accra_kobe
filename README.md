@@ -6,7 +6,7 @@
 - Mosquitto (port 1883)
 - IoTAgent (port 4041)
 - Keyroc (port 3005)
-- Squid: no configuration
+- Squid (port 80): connecting to orion (1026)
 - Mysql (port 3306): connecting to Keyroc
 
 Ports 1883 must be exposed for external applications at least.
@@ -72,4 +72,11 @@ $ sudo ./services start
 ```
 $ sudo ./services stop
 ```
+
+# squid account/password
+
+Username: accra
+Password: test
+
+You can change the username/password by editing squid/htpasswd file.
 
