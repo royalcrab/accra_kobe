@@ -5,12 +5,16 @@
 - MongoDB (port 27017)
 - Mosquitto (port 1883)
 - IoTAgent (port 4041)
+- Keyroc (port 3005)
+- Squid: no configuration
+- Mysql (port 3306): connecting to Keyroc
 
-Ports 1026 and 1883 must be exposed for external applications.
+Ports 1883 must be exposed for external applications at least.
 
 This server is an extention of the following tutorials:
-- https://github.com/Fiware/tutorials.IoT-over-MQTT/blob/master/README.md
-- https://github.com/Fiware/tutorials.Historic-Context/blob/23cd4a2eea86805581757492e03202d5a8b86ee4/README.md
+- MQTT/IoTAgent https://github.com/Fiware/tutorials.IoT-over-MQTT/blob/master/README.md
+- Historic Content: https://github.com/Fiware/tutorials.Historic-Context/blob/23cd4a2eea86805581757492e03202d5a8b86ee4/README.md
+- Securing-Access： https://github.com/Fiware/tutorials.Securing-Access/blob/10fad443d3303949c2f106523986ab2224aa1fb4/README.ja.md
 
 Note: We removed the Context-Provider included in these tutorials.
 
