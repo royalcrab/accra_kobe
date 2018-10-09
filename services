@@ -20,9 +20,9 @@ case "${command}" in
                 echo -e "- \033[1;34mOrion\033[0m is the context broker"
                 echo -e "- \033[1;36mIoT-Agent\033[0m is configured for the UltraLight Protocol"
                 echo -e "- \033[1;30mMosquitto\033[0m acts as an MQTT Message Broker"
-                echo -e "- \033[1;30mCygnus\033[0m acts as a Historical Data Manager"
-                echo -e "- \033[1;30mSquid\033[0m acts as a Reverse TSL Proxy"
-                echo -e "- \033[1;30mKeyroc\033[0m acts as an Identity Management Front-End"
+                echo -e "- \033[1;31mCygnus\033[0m acts as a Historical Data Manager"
+                echo -e "- \033[1;32mSquid\033[0m acts as a Reverse TSL Proxy"
+                echo -e "- \033[1;33mKeyroc\033[0m acts as an Identity Management Front-End"
                 echo ""
                 docker-compose --log-level ERROR -p fiware up -d --remove-orphans
                 ;;
