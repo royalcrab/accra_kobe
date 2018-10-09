@@ -100,6 +100,8 @@ services:
         ipv4_address: 172.18.1.7
     volumes:
       - /srv/docker/squid/cache:/var/spool/squid
+      - ./squid/squid.conf:/etc/squid/squid.conf
+      - ./squid/htpasswd:/etc/squid/.htpasswd
     restart: always
 
   keyrock:
