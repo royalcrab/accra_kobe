@@ -93,9 +93,9 @@ services:
   squid:
     image: sameersbn/squid:3.5.27
     expose:
-      - "80"
+      - "8080"
     ports:
-      - "80:80"
+      - "8080:8080"
     networks:
       default:
         ipv4_address: 172.18.1.7
