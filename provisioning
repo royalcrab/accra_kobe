@@ -1,0 +1,116 @@
+curl -iX POST \
+  'http://localhost:4041/iot/services' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "services": [
+   {
+     "apikey":      "accra",
+     "cbroker":     "http://orion:1026",
+     "entity_type": "Thing",
+     "resource":    ""
+   }
+ ]
+}'
+curl -iX POST \
+  'http://localhost:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "devices": [
+   {
+     "device_id":   "temp001",
+     "entity_name": "urn:accra:Temperature:001",
+     "entity_type": "Temperature",
+     "protocol":    "PDI-IoTA-UltraLight",
+     "transport":   "MQTT",
+     "timezone":    "Asia/Tokyo",
+     "attributes": [
+       { "object_id": "c", "name": "count", "type": "Integer" }
+     ]
+   }
+ ]
+}
+'
+curl -iX POST \
+  'http://localhost:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "devices": [
+   {
+     "device_id":   "hum001",
+     "entity_name": "urn:accra:Humidity:001",
+     "entity_type": "Humidity",
+     "protocol":    "PDI-IoTA-UltraLight",
+     "transport":   "MQTT",
+     "timezone":    "Asia/Tokyo",
+     "attributes": [
+       { "object_id": "c", "name": "count", "type": "Integer" }
+     ]
+   }
+ ]
+}
+'
+curl -iX POST \
+  'http://localhost:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "devices": [
+   {
+     "device_id":   "hb001",
+     "entity_name": "urn:accra:HeartBeat:001",
+     "entity_type": "HeartBeat",
+     "protocol":    "PDI-IoTA-UltraLight",
+     "transport":   "MQTT",
+     "timezone":    "Asia/Tokyo",
+     "attributes": [
+       { "object_id": "c", "name": "count", "type": "Integer" }
+     ]
+   }
+ ]
+}
+'
+curl -iX POST \
+  'http://localhost:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+  "devices": [
+    {
+      "device_id": "flash001",
+      "entity_name": "urn:accra:Flash:001",
+      "entity_type": "Flash",
+      "protocol": "PDI-IoTA-UltraLight",
+      "transport": "MQTT",
+      "commands": [
+        { "name": "flash", "type": "command" }
+       ]
+    }
+  ]
+}
+'
+curl -iX POST \
+  'http://localhost:4041/v1/updateContext' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+    "contextElements": [
+        {
+            "type": "Flash",
+            "isPattern": "false",
+            "id": "urn:accra:Flash:001",
+            "attributes": [
+                { "name": "flash", "type": "command", "value": "" }
+            ]
+        }
+    ],
+    "updateAction": "UPDATE"
+}'
