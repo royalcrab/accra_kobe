@@ -28,7 +28,7 @@ curl -iX POST \
      "transport":   "MQTT",
      "timezone":    "Asia/Tokyo",
      "attributes": [
-       { "object_id": "c", "name": "count", "type": "Integer" }
+       { "object_id": "t", "name": "count", "type": "Integer" }
      ]
    }
  ]
@@ -49,7 +49,30 @@ curl -iX POST \
      "transport":   "MQTT",
      "timezone":    "Asia/Tokyo",
      "attributes": [
-       { "object_id": "c", "name": "count", "type": "Integer" }
+       { "object_id": "h", "name": "count", "type": "Integer" }
+     ]
+   }
+ ]
+}
+'
+
+
+curl -iX POST \
+  'http://localhost:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "devices": [
+   {
+     "device_id":   "smile001",
+     "entity_name": "urn:accra:Smile:001",
+     "entity_type": "Smile",
+     "protocol":    "PDI-IoTA-UltraLight",
+     "transport":   "MQTT",
+     "timezone":    "Asia/Tokyo",
+     "attributes": [
+       { "object_id": "s", "name": "count", "type": "Integer" }
      ]
    }
  ]
@@ -63,19 +86,40 @@ curl -iX POST \
   -d '{
  "devices": [
    {
-     "device_id":   "hb001",
+     "device_id":   "beat001",
      "entity_name": "urn:accra:HeartBeat:001",
-     "entity_type": "HeartBeat",
+     "entity_type": "BeatCount",
      "protocol":    "PDI-IoTA-UltraLight",
      "transport":   "MQTT",
      "timezone":    "Asia/Tokyo",
      "attributes": [
-       { "object_id": "c", "name": "count", "type": "Integer" }
+       { "object_id": "b", "name": "count", "type": "Integer" }
      ]
    }
  ]
 }
 '
+
+curl -X GET \
+  'http://localhost:1026/v2/entities/urn:accra:HeartBeat:001?type=BeatCount' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /'
+
+curl -X GET \
+  'http://localhost:1026/v2/entities/urn:accra:Temperature:001?type=Temperature' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /'
+
+curl -X GET \
+  'http://localhost:1026/v2/entities/urn:accra:Humidity:001?type=Humidity' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /'
+
+curl -X GET \
+  'http://localhost:1026/v2/entities/urn:accra:Smile:001?type=Smile' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /'
+
 curl -iX POST \
   'http://localhost:4041/iot/devices' \
   -H 'Content-Type: application/json' \
@@ -84,33 +128,18 @@ curl -iX POST \
   -d '{
   "devices": [
     {
-      "device_id": "flash001",
-      "entity_name": "urn:accra:Flash:001",
-      "entity_type": "Flash",
+      "device_id": "bell001",
+      "entity_name": "urn:accra:Bell:001",
+      "entity_type": "Bell",
       "protocol": "PDI-IoTA-UltraLight",
       "transport": "MQTT",
       "commands": [
-        { "name": "flash", "type": "command" }
-       ]
+        { "name": "ring", "type": "command" }
+       ],
+       "static_attributes": [
+         {"name":"refStore", "type": "Relationship","value": "urn:accra:Store:001"}
+      ]
     }
   ]
 }
 '
-curl -iX POST \
-  'http://localhost:4041/v1/updateContext' \
-  -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
-  -H 'fiware-servicepath: /' \
-  -d '{
-    "contextElements": [
-        {
-            "type": "Flash",
-            "isPattern": "false",
-            "id": "urn:accra:Flash:001",
-            "attributes": [
-                { "name": "flash", "type": "command", "value": "" }
-            ]
-        }
-    ],
-    "updateAction": "UPDATE"
-}'

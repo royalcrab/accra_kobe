@@ -29,7 +29,7 @@ services:
       - mongo-db:/data
 
   orion:
-    image: fiware/orion
+    image: fiware/orion:1.14.0
     container_name: fiware-orion
     depends_on:
         - mongo-db
@@ -68,7 +68,7 @@ services:
       - "IOTA_MONGO_DB=iotagentul" # The name of the database used in mongoDB
       - "IOTA_MQTT_HOST=mosquitto" # The host name of the MQTT Broker
       - "IOTA_MQTT_PORT=1883" # The port the MQTT Broker is listening on to receive topics 
-      - "IOTA_PROVIDER_URL=http://localhost:4041"
+      - "IOTA_PROVIDER_URL=http://iot-agent:4041"
 
   cygnus:
     image: fiware/cygnus-ngsi:latest
@@ -90,6 +90,69 @@ services:
         - "CYGNUS_SERVICE_PORT=5050"
         - "CYGNUS_API_PORT=5080"
 
+  squid:
+    image: sameersbn/squid:3.5.27
+    expose:
+      - "10080"
+    ports:
+      - "10080:10080"
+    networks:
+      default:
+        ipv4_address: 172.18.1.7
+    volumes:
+      - /srv/docker/squid/cache:/var/spool/squid
+      - ./squid/squid.conf:/etc/squid/squid.conf
+      - ./squid/htpasswd:/etc/squid/.htpasswd
+    restart: always
+
+  keyrock:
+    image: fiware/idm:7.0.2
+    container_name: fiware-keyrock
+    hostname: keyrock
+    networks:
+      default:
+        ipv4_address: 172.18.1.8
+    depends_on:
+      - mysql-db
+    ports:
+      - "3005:3005"
+      - "3443:3443"
+    environment:
+      - DEBUG=idm:*
+      - DATABASE_HOST=mysql-db
+      - IDM_DB_PASS_FILE=/run/secrets/my_secret_data
+      - IDM_DB_USER=root
+      - IDM_HOST=http://localhost:3005
+      - IDM_PORT=3005
+      - IDM_HTTPS_ENABLED=${IDM_HTTPS_ENABLED}
+      - IDM_HTTPS_PORT=3443
+      - IDM_ADMIN_USER=accra
+      - IDM_ADMIN_EMAIL=accra@mplpl.com
+      - IDM_ADMIN_PASS=test
+    secrets:                
+      - my_secret_data
+
+  mysql-db:
+    restart: always
+    image: mysql:5.7
+    hostname: mysql-db
+    container_name: db-mysql
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    networks:
+      default:
+        ipv4_address: 172.18.1.9
+    environment:
+      - "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my_secret_data"
+      - "MYSQL_ROOT_HOST=172.18.1.8"
+    volumes:
+      - mysql-db:/var/lib/mysql
+      - ./mysql-data:/docker-entrypoint-initdb.d/:ro
+    secrets:                
+      - my_secret_data
+
 networks:
   default:
     ipam:
@@ -97,4 +160,8 @@ networks:
         - subnet: 172.18.1.0/24
 volumes:
   mongo-db:
+  mysql-db:
 
+secrets:
+  my_secret_data:
+    file: ./secrets.txt
