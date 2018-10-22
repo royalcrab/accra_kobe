@@ -67,6 +67,18 @@ $ sudo ./services create
 $ sudo ./services start
 ```
 
+# Provisioning
+
+```
+$ bash prov
+```
+
+- HeartBeat sensor : /accra/beat001/attrs
+- Temperature sensor: /accra/temp001/attrs
+- Humidity sensor: /accra/hum001/attrs
+- Smile sensor: /accra/smile001/attrs
+- Flash device: /accra/bell001/cmd
+
 # Stopping Servives
 
 ```
