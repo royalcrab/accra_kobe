@@ -100,6 +100,50 @@ curl -iX POST \
 }
 '
 
+curl -iX POST \
+  'http://localhost:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "devices": [
+   {
+     "device_id":   "beat002",
+     "entity_name": "urn:accra:HeartBeat:002",
+     "entity_type": "BeatCount",
+     "protocol":    "PDI-IoTA-UltraLight",
+     "transport":   "MQTT",
+     "timezone":    "Asia/Tokyo",
+     "attributes": [
+       { "object_id": "b", "name": "count", "type": "Integer" }
+     ]
+   }
+ ]
+}
+'
+
+curl -iX POST \
+  'http://localhost:4041/iot/devices' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+ "devices": [
+   {
+     "device_id":   "beat003",
+     "entity_name": "urn:accra:HeartBeat:003",
+     "entity_type": "BeatCount",
+     "protocol":    "PDI-IoTA-UltraLight",
+     "transport":   "MQTT",
+     "timezone":    "Asia/Tokyo",
+     "attributes": [
+       { "object_id": "b", "name": "count", "type": "Integer" }
+     ]
+   }
+ ]
+}
+'
+
 curl -X GET \
   'http://localhost:1026/v2/entities/urn:accra:HeartBeat:001?type=BeatCount' \
   -H 'fiware-service: openiot' \
