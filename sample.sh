@@ -10,4 +10,5 @@ chown -R www-data /usr/share
 sudo mkdir /usr/share/phpmyadmin/config
 chmod 777 /usr/share/phpmyadmin/config
 chown -R www-data /usr/share
+ln -s /usr/share/phpmyadmin /var/www/html/
 mysql_secure_installation
