@@ -12,3 +12,4 @@ chmod 777 /usr/share/phpmyadmin/config
 chown -R www-data /usr/share
 ln -s /usr/share/phpmyadmin /var/www/html/
 mysql_secure_installation
+cp mysqld.cnf /etc/mysql/mysql.conf.d/
