@@ -2,5 +2,8 @@ sudo mysql -u root -p
 
 source /usr/share/phpmyadmin/sql/create_tables.sql
 GRANT ALL PRIVILEGES ON phpmyadmin.* TO pma@localhost IDENTIFIED BY 'pass';
+create database iot;
+GRANT ALL PRIVILEGES ON iot.* TO pma@localhost;
 FLUSH PRIVILEGES;
+show variables like "chara%";
 exit;
