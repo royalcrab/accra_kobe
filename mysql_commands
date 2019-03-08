@@ -1,9 +1,7 @@
-sudo mysql -u root -p
-
 SET character_set_server=utf8；
 SET character_set_database=utf8;
-source /usr/share/phpmyadmin/sql/create_tables.sql
-GRANT ALL PRIVILEGES ON phpmyadmin.* TO pma@localhost IDENTIFIED BY 'pass';
+source /usr/share/phpmyadmin/sql/create_tables.sql；
+GRANT ALL PRIVILEGES ON phpmyadmin.* TO pma@localhost IDENTIFIED BY 'abc123ABC!"#';
 create database iot;
 GRANT ALL PRIVILEGES ON iot.* TO pma@localhost;
 FLUSH PRIVILEGES;
