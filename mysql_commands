@@ -1,0 +1,6 @@
+sudo mysql -u root -p
+
+source /usr/share/phpMyAdmin/examples/create_tables.sql
+GRANT ALL PRIVILEGES ON phpmyadmin.* TO pma@localhost IDENTIFIED BY 'pass';
+FLUSH PRIVILEGES;
+exit;
