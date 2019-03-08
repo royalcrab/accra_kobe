@@ -1,7 +1,8 @@
-apt upgrade
-apt update
+apt upgrade -y
+apt update -y
 apt install apache2 -y
 apt install mosquitto -y
+apt install mosquitto-clients -y
 apt install mysql-server mysql-client -y
 apt install php -y
 sudo apt install phpmyadmin -y
