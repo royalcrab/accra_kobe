@@ -90,5 +90,14 @@ $ sudo ./services stop
 Username: accra
 Password: test
 
-You can change the username/password by editing squid/htpasswd file.
+I strongly recomend to change the username/password by editing squid/htpasswd file.
+
+# documents for IoTAgent and FIWARE
+
+Tutorual: https://github.com/FIWARE/tutorials.IoT-over-MQTT
+
+NOTE: This system uses IoTAgent 1.7 (not 1.8) because above tutorial does not work in version 1.8. 
+This problem is reported in https://github.com/FIWARE/tutorials.IoT-over-MQTT/issues/8 but there are
+no solution on 3/1/2019.
+
 
