@@ -15,3 +15,7 @@ ln -s /usr/share/phpmyadmin /var/www/html/
 mysql_secure_installation
 cp mysqld.cnf /etc/mysql/mysql.conf.d/
 /etc/init.d/mysql restart
+a2enmod ssl
+a2ensite default-ssl
+apt-get install certbot python-certbot-apache
+# letsencrypt run --apache
